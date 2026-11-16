@@ -1,128 +1,126 @@
-# Food Diary App: Feature Design
+# Food Diary App: Feature Design (v2)
 
-> Builds on [01-user-research.md](./01-user-research.md). Working name: **"Bite Log"** (placeholder).
+> Builds on [01-user-research.md](./01-user-research.md). Gamification details are in [03-gamification.md](./03-gamification.md).
+> Working name: **"Bite Log"** (placeholder). Other ideas: *Plate Passport*, *Forkcast*, *Munch Map*, *Dishcovery*.
+
+## Decision log
+
+| Date | Decision |
+|---|---|
+| 2026-11-16 | **Public app on the iPhone App Store** (not a personal tool) |
+| 2026-11-16 | **No calorie counting.** The app is about variety, discovery and fun |
+| 2026-11-16 | Track **food types, cuisines, and where the food came from** (home-cooked / restaurant / takeout…) |
+| 2026-11-16 | **Gamification** is a core pillar, not an add-on |
 
 ---
 
 ## 1. Product vision
 
-**A food diary that takes 5 seconds to fill in and actually tells you something.**
+**A food journal that feels like a game of exploration, not a diet.**
 
-Log a meal with a photo or a few words, optionally add how you felt, and get gentle, plain-language patterns over time. Numbers are opt-in, and the tone is never judgmental.
+Snap what you eat, tag where it came from and what cuisine it is, and watch your *Food Passport* fill up. You collect cuisines, level up as a home cook, take on weekly quests, and get a "Wrapped"-style recap of your year in food.
+
+**Positioning:** *"Untappd / Beli / Spotify Wrapped, for everything you eat."* It is the opposite of a calorie tracker. There are no numbers to hit and no "bad" foods.
 
 ### Design principles
-1. **Capture first, details later.** Every entry can start as just a photo or a word.
-2. **Partial is fine.** Incomplete entries still count. Missing a meal doesn't break anything.
-3. **You choose what to track.** Modules (symptoms, mood, macros, water…) are turned on per user.
-4. **Insights over dashboards.** Short sentences beat charts nobody reads.
-5. **Neutral language.** No "good/bad foods", no red warnings, no "cheat days".
-6. **Private by default.** Data stays on the device first. Export anytime, and no social feed.
+1. **Capture first, details later.** A photo alone is a valid entry.
+2. **Details are rewarded, never required.** Adding cuisine or food types earns stamps and XP. Gamification pays for completeness instead of nagging for it.
+3. **Celebrate variety and curiosity**, not restriction.
+4. **No punishment.** Missing a day costs nothing. There are no red numbers and no streak resets that wipe progress.
+5. **Shareable by design.** Recap cards and passport stamps look good on Instagram Stories. That is how a public app grows.
+6. **Private by default.** Entries are private unless the user shares a card.
+
+### Who it's for (updated personas)
+- **Primary, "Foodie Explorer Ellie"**: eats out, likes trying new places and cuisines, already photographs food. *Wants:* a memory of what she ate and where, plus bragging rights.
+- **Primary, "Curious Casey"**: wants to know their eating habits (how much takeout? how often do I cook?) without counting calories.
+- **Secondary, "Home Cook Hana"**: learning to cook. *Wants:* to see progress and keep cooking more.
+- **Later module, "Symptom Sam"**: symptom tracking moves to a later optional module. It doesn't fit the fun tone of the core app, and health claims make App Store review harder.
 
 ---
 
-## 2. Feature brainstorm (everything on the table)
+## 2. What a log entry captures
 
-### Logging
-- 📷 Photo log: one tap opens the camera, and the meal type is auto-tagged by time of day
-- ✍️ Quick text log ("oat latte + banana bread")
-- 🔁 "Again" button: re-log recent or frequent meals in one tap
-- ⭐ Saved meals / recipes
-- 🏷️ Tags: home-cooked, takeout, restaurant, snack, location
-- 🎙️ Voice log
-- 🔎 Barcode scan → packaged food info
-- 🤖 AI photo recognition → suggested foods and portion estimates (always editable)
-- 💧 Water and drink tracker
-- 🕑 Back-fill: log a meal for earlier today or yesterday
+Speed is protected by keeping only **photo or name** needed to save. Everything else is one-tap chips, and many fields can be filled in automatically.
 
-### Body and mind (optional modules)
-- 😊 Mood before/after (5 emoji scale)
-- 🍽️ Hunger and fullness scale (1–5)
-- ⚡ Energy level
-- 🤢 Symptoms: bloating, pain, headache, reflux, skin, custom, each with severity and time
-- 😴 Sleep and 🏃 activity (manual, or from Apple Health / Google Fit)
-- 📝 Free-text notes / journal
-
-### Numbers (optional module)
-- Calories, protein/carbs/fat
-- Daily targets (shown neutrally, as a range rather than a hard limit)
-- Micronutrients (later)
-
-### Insights
-- 📅 Daily timeline view
-- 🗓️ Calendar with a photo grid ("food mosaic")
-- 📊 Weekly recap card: meals logged, home vs. out, veggie days, mood trends
-- 🔍 Pattern finder: "Bloating was logged after 4 of 6 meals containing dairy, vs. 1 of 14 without"
-- 🔎 Search history ("when did I last eat sushi?")
-
-### Habit support
-- ⏰ Smart reminders based on your usual meal times; skips if you already logged
-- 🌱 Consistency shown as "days logged this week", not a fragile streak
-- 🎯 Light goals: "eat breakfast 5x/week", "2 home-cooked dinners"
-
-### Sharing and export
-- 📄 PDF/CSV export for a doctor or dietitian (food + symptom timeline)
-- 🔗 Read-only share link for a coach (later)
-- ☁️ Optional cloud backup / multi-device sync
-
-### Fun / delight
-- Restaurant and dish memory ("what was that great ramen place?")
-- Monthly "year in food" style recap
-- Grocery spend tracking
-
----
-
-## 3. Prioritization (MoSCoW)
-
-Scored on **user value** (from research) vs. **build effort**.
-
-| Priority | Feature | Why |
+| Field | Values | How it's filled fast |
 |---|---|---|
-| **Must (MVP)** | Photo log + quick text log | Core low-friction capture, the #1 reason people quit |
-| **Must** | Daily timeline + edit/delete entries | Basic diary function |
-| **Must** | Meal type auto-tagging (by time) | Removes a step |
-| **Must** | "Again" / recent meals quick re-log | Big speed win, cheap to build |
-| **Must** | Optional mood + hunger/fullness on entry | Supports Casey & Mia at near-zero cost |
-| **Must** | Symptom log (standalone entries, with severity) | Key differentiator for Sam |
-| **Must** | Local storage + CSV export | Privacy and trust |
-| **Should (v1.1)** | Weekly recap card | First payoff moment |
-| **Should** | Calendar photo grid | Delightful, reinforces habit |
-| **Should** | Smart reminders | Retention |
-| **Should** | Food → symptom pattern finder (simple counts) | Core insight for Sam |
-| **Should** | PDF report for doctor | High value for Sam |
-| **Could (v2)** | Barcode scan, calories/macros module | Needed by some users, but crowded space and needs a food database |
-| **Could** | AI photo recognition | Impressive, but costly and must stay optional |
-| **Could** | Health app integration (sleep/steps) | Richer correlations |
-| **Could** | Cloud sync / accounts | Needed for multi-device |
-| **Won't (for now)** | Social feed, leaderboards | Conflicts with privacy and no-shame principles |
-| **Won't** | Diet plans / meal prescriptions | Medical liability, out of scope |
+| Photo | Camera / library | One tap from home screen |
+| Dish name | Free text ("Tonkotsu ramen") | Autocomplete from your history |
+| **Source** | 🏠 Home-cooked · 🍽️ Restaurant · 🥡 Takeout/Delivery · 🛒 Packaged/Store-bought · 👵 Someone cooked for me · 🎉 Event/Party | Big chips. Remembers your pattern by time of day |
+| **Cuisine** | ~40 cuisines: Japanese, Mexican, Italian, Ethiopian, Korean, Thai, Indian, Lebanese, Peruvian, American, Fusion… | Auto-filled from restaurant category. Recent cuisines shown first |
+| **Food types** (multi) | 🥦 Veg · 🍎 Fruit · 🌾 Grains · 🫘 Legumes · 🥩 Meat · 🐟 Seafood · 🥚 Eggs · 🧀 Dairy · 🌱 Plant-based · 🍰 Sweets · ☕ Drink · 🌶️ Spicy | Chips. Later: suggested from photo using on-device ML |
+| Meal | Breakfast · Brunch · Lunch · Dinner · Snack · Late-night · Drink | Auto by time |
+| Place | Restaurant / café | Apple MapKit place search, auto-suggested by location |
+| Rating | 👎 · 😐 · 👍 · 🤩 ("would eat again?") | One tap |
+| With | Solo · Friends · Family · Date · Work | Optional chip |
+| First time? | Auto-detected for new dish/cuisine/place | Triggers a "New discovery!" moment |
+| Price | Optional $ amount | Off by default (setting) |
+| Note | Free text | Optional |
+
+**Target:** photo-only log ≤ 3 seconds. Fully tagged log ≤ 15 seconds.
 
 ---
 
-## 4. MVP scope
+## 3. Feature list and priorities
 
-**Goal of MVP:** prove that people will log at least 2 meals a day for 2 weeks when logging is this easy.
+### Must have (MVP)
+| Feature | Notes |
+|---|---|
+| Photo + text logging | Core capture |
+| Source, cuisine, food types, meal, rating chips | The new tracking axes |
+| Restaurant search (MapKit) | Auto-fills cuisine. Powers the map |
+| Timeline / History (Today + scrollback) | Basic diary |
+| "Again" quick re-log | Speed |
+| **Food Passport**: cuisines collected | #1 gamification hook (see 03) |
+| **XP + levels** and ~20 starter **badges** | Progress feeling |
+| **Weekly quests** (3 per week) | Reason to come back |
+| Weekly stats card: home vs. out, cuisines, variety | First payoff |
+| Local storage + iCloud sync (CloudKit) | Private, free, no login needed |
+| Share card (export image of a stamp/badge/weekly recap) | Growth |
 
-### MVP screens
-1. **Today (home)**: timeline of today's entries, with a big **+** button and a row of "Again" chips
-2. **Add entry** (bottom sheet):
-   - Camera / photo picker *or* text field (either one is enough to save)
-   - Meal type (pre-selected by time; Breakfast / Lunch / Dinner / Snack / Drink)
-   - Optional, collapsed: mood 😞😕😐🙂😄, hunger before / fullness after, tags, note
-   - **Save** (target: ≤ 2 taps for photo, ≤ 5 seconds total)
-3. **Log symptom**: pick from chips (bloating, cramps, headache, nausea, low energy, + custom), severity 1–5, time (defaults to now)
-4. **History**: scroll back by day, plus a search box
-5. **Entry detail**: view / edit / delete
-6. **Settings**: choose modules (mood, hunger, symptoms), reminders on/off, export CSV
+### Should have (v1.1)
+| Feature | Notes |
+|---|---|
+| **Food Map**: pins of every place you've eaten | Very satisfying for Ellie |
+| Personal rankings ("My top ramen") | Beli-style. Fun, and a reason to rate |
+| Monthly recap + **"Bite Wrapped"** year in review | Big viral moment each December |
+| **Eat the Rainbow / 30 Plants a Week** challenge | Healthy without calories |
+| Home-cook skill tree (cook X cuisines at home) | Hana |
+| Home-screen widget (log + weekly progress) | Retention, iOS-native delight |
+| Smart reminders | Retention |
 
-### Key user flow: log a meal
+### Could have (v2+)
+- On-device photo → dish / food type suggestions (Apple Vision / Core ML)
+- Friends: follow, compare passports, co-op quests (opt-in)
+- Takeout spending insights ("you saved ~$X cooking at home")
+- Recipe saving for home-cooked dishes
+- Symptom / mood module
+- Seasonal events ("Taco Tuesday month", "Lunar New Year dumpling quest")
+- Apple Watch quick log, Live Activities
+
+### Won't have
+- Calorie / macro counting, weight tracking
+- Public leaderboards ranking *how much* someone eats
+- Diet plans or health claims
+
+---
+
+## 4. MVP screens
+
+1. **Today (home)**: today's entries as photo cards, big **+** button, "Again" chips, this week's quest progress bar
+2. **Add entry** (bottom sheet): photo → source chips → cuisine chips → food type chips → rating → Save. All but photo/name are optional, and each filled field shows "+XP"
+3. **Discovery moment** (overlay): "🎉 New cuisine unlocked: Ethiopian! Stamp #12" with a share button
+4. **Passport**: stamp grid of cuisines (collected = colourful stamp with date and dish, uncollected = silhouette), plus a counter "12 / 40"
+5. **Profile / Progress**: level, XP bar, badges, quests, weekly stats
+6. **History**: calendar with photo thumbnails, search, filters (cuisine, source, place)
+7. **Entry detail**: view / edit / delete
+8. **Onboarding** (3 screens): what it is, "no calories, ever", pick favourite cuisines (pre-stamps 0 but personalizes quests), notification permission
+9. **Settings**: iCloud sync, reminders, price tracking toggle, export CSV, delete all data
+
+### Core loop
 ```
-Open app → tap [+] → camera opens → snap → (auto: "Lunch, 12:41") → [Save]
-                                          ↳ optional: tap "Add details" → mood / note / tags
-```
-
-### Key user flow: log a symptom
-```
-Open app → tap [+] → "Symptom" tab → tap "Bloating" → severity ●●●○○ → [Save]
+Eat → Snap (3 s) → Tag (optional, +XP) → Reward (XP / stamp / quest progress)
+   → Weekly recap & new quests (Monday) → Share card → friends download → …
 ```
 
 ---
@@ -131,80 +129,69 @@ Open app → tap [+] → "Symptom" tab → tap "Bloating" → severity ●●●
 
 ```text
 Entry
-  id            uuid
-  type          "meal" | "drink" | "symptom" | "note"
-  timestamp     datetime (editable; supports back-fill)
-  mealType      "breakfast" | "lunch" | "dinner" | "snack" | null
-  title         string? (e.g. "Chicken burrito")
-  photoUri      string?
-  note          string?
-  tags          string[]  (e.g. ["takeout", "spicy", "dairy"])
-  moodBefore    1–5?
-  moodAfter     1–5?
-  hungerBefore  1–5?
-  fullnessAfter 1–5?
-  createdAt / updatedAt
+  id, timestamp, mealType
+  title?, photo?, note?
+  source        enum (home, restaurant, takeout, packaged, cookedForMe, event)
+  cuisineIds    [Cuisine]          (usually 1; fusion can have 2)
+  foodTypes     [FoodType]
+  placeId?      → Place
+  rating        enum? (no, meh, yes, love)
+  companions    enum?
+  price?        decimal
+  isFirstDish / isFirstCuisine / isFirstPlace   (computed at save)
 
-Symptom (when type = "symptom")
-  name          string (e.g. "bloating")
-  severity      1–5
-  durationMin   int?
+Place        id, name, mapKitId, lat/lng, category, defaultCuisineId
+Cuisine      id, name, region, flag/emoji, stampArt     (static catalog)
+FoodType     id, name, emoji, isPlant                    (static catalog)
 
-SavedMeal
-  id, title, photoUri?, tags[], useCount, lastUsedAt
-
-Settings
-  enabledModules   ["mood", "hunger", "symptoms", "macros", ...]
-  reminderTimes    time[] | "smart"
-  showNumbers      bool
+Progress     xp, level
+Badge        id, unlockedAt?                             (definitions in code)
+Quest        id, weekOf, definitionId, progress, target, completedAt?
 ```
 
-Tags such as `dairy`, `gluten`, `caffeine`, or `spicy` matter because the pattern finder compares symptom frequency in the hours after meals **with** a tag against meals **without** it. That works without a full nutrition database.
+---
+
+## 6. Tech approach (iPhone-only)
+
+| Option | Pros | Cons |
+|---|---|---|
+| **SwiftUI + SwiftData + CloudKit** ⭐ | Best iOS feel, widgets, MapKit, on-device Vision ML, free iCloud sync with no backend or login, Sign in with Apple not needed | **Requires a Mac with Xcode** to build. Swift learning curve |
+| React Native + Expo | JavaScript/TypeScript, can build iOS in the cloud (EAS) **without a Mac**, test on your iPhone via Expo Go, Android later for free | Widgets and some native features need extra work. Sync needs a backend (e.g. Supabase) |
+
+**Recommendation:** SwiftUI if you have a Mac, because it fits an iPhone-only, private, widget-heavy app best. Expo if you don't.
+
+**App Store requirements:** Apple Developer Program ($99/yr), privacy policy URL, App Privacy "nutrition label", screenshots, and no medical claims.
 
 ---
 
-## 6. Tech options (to decide before development)
+## 7. Monetization (open, decide before launch)
 
-| Option | Pros | Cons | Fit |
-|---|---|---|---|
-| **React Native + Expo** | One codebase for iOS + Android, fast iteration, camera and notifications built in, test on your phone via Expo Go | Slightly less native feel | ⭐ Recommended for MVP |
-| Flutter | Great UI performance, single codebase | Dart learning curve | Good |
-| Native Swift / Kotlin | Best platform feel and HealthKit access | Two codebases | Later, if needed |
-| PWA (web app) | No app store, simplest to build | Weaker camera, notification, and offline support on iOS | Fastest prototype |
-
-**Storage:** on-device SQLite (e.g. `expo-sqlite`) for MVP, with photos in the app's file system. Add optional cloud sync (e.g. Supabase / Firebase) in v2.
+Research showed paywalled basics are a top complaint. Proposal:
+- **Free:** all logging, passport, badges, quests, weekly recap.
+- **Optional "Bite+"** (~$2–3/mo or ~$20/yr): Wrapped extras, custom stamp themes and app icons, advanced stats and filters, unlimited personal rankings, early seasonal events.
+- No ads in the MVP.
 
 ---
 
-## 7. Success metrics
+## 8. Success metrics
 
-| Metric | MVP target |
+| Metric | MVP beta target |
 |---|---|
-| Median time to log a meal | ≤ 10 s |
-| Meals logged per active day | ≥ 2 |
-| Day-7 retention (logged on day 7) | ≥ 40% |
-| Day-14 retention | ≥ 25% |
-| % entries with optional details (mood/tags) | Watch only. Shows if optional fields are valued |
-| Qualitative: "I learned something about my eating" | ≥ 50% of testers at end of week 2 |
+| Time to log (photo only) | ≤ 3 s |
+| Entries per active day | ≥ 2 |
+| % entries with cuisine + source tagged | ≥ 60% (shows the reward loop works) |
+| Day-7 / Day-30 retention | ≥ 40% / ≥ 20% |
+| Weekly quest completion | ≥ 30% of active users |
+| Share-card exports per weekly active user | Track. This is the growth signal |
 
 ---
 
-## 8. Roadmap sketch
+## 9. Roadmap
 
 | Phase | Contents |
 |---|---|
-| **0. Validate** (1–2 wks) | Your own 7-day diary study, 5–8 interviews, survey. Update personas and priorities |
-| **1. MVP** (3–5 wks) | Section 4 screens, local storage, CSV export. Test with 5–10 friends for 2 weeks |
-| **1.1** | Weekly recap, calendar grid, smart reminders, symptom pattern finder, PDF export |
-| **2** | Optional numbers module (barcode + food database), AI photo suggestions, Health app integration, cloud sync |
-
----
-
-## 9. Open questions (decide before building)
-
-1. **Who is this for first?** Just you, or a public app? It changes how much polish, onboarding, and backend we need.
-2. **Primary goal:** awareness/habits, symptom-detective, or calories/macros?
-3. **Platform:** iPhone, Android, or both? Is a web prototype acceptable to start?
-4. **Numbers:** include calories in the MVP or keep it numbers-free?
-5. **AI features:** worth an API cost (e.g. photo → food suggestions) in v1, or later?
-6. **Data:** local-only is OK, or do you need sync across devices from day one?
+| **0. Validate** (1–2 wks) | Log your own meals for a week with the new tags. Run interviews with the updated guide (01 §8). Test paper sketches of the Passport and quest screens |
+| **1. MVP** (5–8 wks) | §4 screens, starter badges and quests, iCloud sync. TestFlight beta with 10–30 people |
+| **1.1** | Food Map, rankings, monthly recap, widget, rainbow / 30-plants challenge |
+| **Launch** | App Store release, ideally a few weeks **before December** to ride "Wrapped" season |
+| **2** | Photo ML suggestions, friends and co-op quests, seasonal events, Bite+ |

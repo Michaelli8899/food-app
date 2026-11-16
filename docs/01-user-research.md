@@ -161,3 +161,43 @@ Recruit a mix: 2–3 people who tracked food before and quit, 2 with digestive o
 - If **most** respondents track for weight or macros and are happy with existing apps → reconsider the niche.
 - If **symptom tracking** ranks top for a large share → make Sam the primary persona and lead with correlations.
 - If acceptable logging time is **under 10 seconds** for most → photo-only capture becomes non-negotiable.
+
+---
+
+## 8. Update (2026-11-16): new direction
+
+**Decision:** public iPhone app, **fun-first, no calorie counting**, tracking food types, cuisines, and source (home-cooked / restaurant / takeout), with gamification.
+
+### 8.1 Revised hypothesis
+The biggest gap is a **food journal people *want* to open**. It rewards curiosity and variety (new cuisines, cooking at home, trying new places) instead of measuring restriction. Primary personas are now **Foodie Explorer Ellie** and **Curious Casey**, with **Home Cook Hana** as secondary (see 02 §1). Symptom tracking moves to a later optional module.
+
+### 8.2 Competitors in the "fun" space
+| App | What it does well | Gap we can fill |
+|---|---|---|
+| Beli | Restaurant ranking by head-to-head comparisons, social lists | Restaurants only. Ignores home cooking, takeout and everyday meals |
+| Untappd / Vivino | Check-ins + badges for beer/wine, which shows badge-collecting works for consumables | Drinks only |
+| Yelp / Google Maps | Restaurant discovery, reviews | Public reviews, not a personal diary |
+| Instagram / camera roll | Where people already photograph food | No structure, stats, or rewards |
+| See How You Eat / Ate | Photo food journal | Little fun or progression |
+| Spotify Wrapped (pattern) | Annual personal recap, massively shared | Nothing like it exists for food |
+
+**Our angle:** cover *every* meal (home, takeout, restaurant), combine Untappd-style collecting with a Wrapped-style recap, and never count calories.
+
+### 8.3 Gamification research notes
+- Gamification raises engagement when rewards match **intrinsic** motives (curiosity, mastery, self-expression). It backfires when it feels like empty points or punishes lapses.
+- **Streak loss** is a common churn trigger in habit apps. Prefer weekly resets and lifetime counters.
+- **Collections** (stamps, Pokédex-style sets) motivate completionists and give long-term goals.
+- **Variable surprise rewards** (hidden badges, "first time!" moments) keep things fresh.
+- Food-specific risk: never reward quantity or restriction (see 03 §1).
+
+### 8.4 Added interview questions
+1. Do you photograph your food today? What happens to those photos?
+2. How many different cuisines do you think you ate last month? Would you like to know?
+3. Show sketches of the **Passport**, a **badge**, a **weekly quest**, and a **Wrapped** card. Which would make you open the app? Which feel cringe?
+4. Would you share any of these on Instagram or with friends?
+5. Would you pay for extras (themes, deeper stats)? What should always stay free?
+
+### 8.5 Added survey questions
+- How often do you eat: home-cooked / restaurant / takeout? (per week)
+- Do you enjoy trying new cuisines? (1–5)
+- Rank: cuisine passport, badges, weekly challenges, year-end recap, restaurant map, personal rankings.
