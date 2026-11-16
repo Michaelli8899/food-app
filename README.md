@@ -59,6 +59,7 @@ project.yml    XcodeGen project spec
 ```
 
 ## Planning docs
+- **[PRD (draft, awaiting approval)](docs/PRD.md)**
 - [User research](docs/01-user-research.md)
 - [Feature design & MVP scope](docs/02-feature-design.md)
 - [Gamification design](docs/03-gamification.md)
