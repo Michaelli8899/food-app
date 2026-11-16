@@ -11,6 +11,8 @@
 | 2026-11-16 | **No calorie counting.** The app is about variety, discovery and fun |
 | 2026-11-16 | Track **food types, cuisines, and where the food came from** (home-cooked / restaurant / takeout…) |
 | 2026-11-16 | **Gamification** is a core pillar, not an add-on |
+| 2026-11-16 | **SwiftUI + SwiftData**, iOS 17+, project generated with XcodeGen. Local storage first; iCloud (CloudKit) sync once a paid developer account is set up |
+| 2026-11-16 | v0.1 uses a free-text place field. MapKit place search and the Food Map move to v1.1 |
 
 ---
 
